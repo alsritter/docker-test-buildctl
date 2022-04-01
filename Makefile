@@ -1,7 +1,8 @@
 build:
-	buildctl build \
+	go build -o dctest 
+	buildctl --debug \
+		--addr tcp://localhost:1234 build \
 		--frontend dockerfile.v0 \
 		--local context=. \
 		--local dockerfile=. \
-		--opt network=bridge
-		--output type=image,name=docker.io/username/image,push=false
+		--output type=image,name=alsritter.com/zhujl04/ci-test:01-master,push=false

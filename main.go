@@ -7,11 +7,25 @@ import (
 	"net/http"
 )
 
+type server int
+
+func (h *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	log.Println(r.URL.Path)
+	w.Write([]byte("Hello World!"))
+}
+
 func main() {
+	// 打印 IP 地址
 	fmt.Println("IPv4: ", GetOutboundIP())
 
+	// 本地请求外网
+	resp, _ := http.Get("http://baidu.com")
+	fmt.Printf("%v \n", resp.Status)
+
+	// 本地起端口不冲突
+	var s server
 	fmt.Println("开始监听 9999 端口")
-	http.ListenAndServe(":9999", nil)
+	http.ListenAndServe(":9999", &s)
 }
 
 // Get preferred outbound ip of this machine

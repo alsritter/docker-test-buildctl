@@ -1,6 +1,6 @@
-FROM ubuntu
+FROM ubuntu:18.04
 
 WORKDIR /app
-ADD . /app
+ADD dctest /app
 
 RUN ./dctest
