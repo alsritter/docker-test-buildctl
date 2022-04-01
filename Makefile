@@ -1,6 +1,6 @@
 build:
-	go build -o dctest 
-	buildctl --debug \
+	go build -o server
+	buildctl \
 		--addr tcp://localhost:1234 build \
 		--frontend dockerfile.v0 \
 		--local context=. \

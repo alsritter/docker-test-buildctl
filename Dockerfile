@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
 WORKDIR /app
-ADD dctest /app
+ADD . /app
 
-RUN ./dctest
+RUN ./server
